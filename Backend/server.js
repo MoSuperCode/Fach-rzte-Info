@@ -11,16 +11,19 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/submit-form", upload.none(), (req, res) => {
+  console.log(req.body);
   let count = 1;
   let dataToSave = "";
 
   const name = req.body.name;
   const email = req.body.select;
   const protokollNummer = req.body["protokoll-nummer"];
-
+  let untersuchung = req.body.untersuchung;
+  let value = req.body.value;
+  dataToSave = `Namenskürzel: ${name},\nEmpfänger E-Mail: ${email},\nProtokollnummer: ${protokollNummer},\nUntersuchung: ${untersuchung}, Wert: ${value}\n`;
   for (
-    let count = 1;
-    req.body["untersuchung" + count] && req.body["wert" + count];
+    let count = 2;
+    req.body["untersuchung" + count] && req.body["value" + count];
     count++
   ) {
     const untersuchung = req.body["untersuchung" + count];
@@ -28,7 +31,6 @@ app.post("/submit-form", upload.none(), (req, res) => {
     dataToSave += `Untersuchung ${count}: ${untersuchung}, Wert ${count}: ${wert}\n`;
   }
 
-  dataToSave = `Namenskürzel: ${name},\nEmpfänger E-Mail: ${email},\nProtokollnummer: ${protokollNummer},\nUntersuchung ${count}: ${untersuchung}, Wert ${count}: ${wert}\n`;
   // Hier erstelle ich ein Zeitstempel und füge ihn in den File - Namen ein
   const timestamp = new Date().toISOString().replace(/:/g, "-");
   const filePath = `./data/facharzt-info-${timestamp}.txt`;
