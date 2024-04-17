@@ -27,8 +27,8 @@ app.post("/submit-form", upload.none(), (req, res) => {
     count++
   ) {
     const untersuchung = req.body["untersuchung" + count];
-    const wert = req.body["wert" + count];
-    dataToSave += `Untersuchung ${count}: ${untersuchung}, Wert ${count}: ${wert}\n`;
+    const value = req.body["value" + count];
+    dataToSave += `Untersuchung ${count}: ${untersuchung}, Wert ${count}: ${value}\n`;
   }
 
   // Hier erstelle ich ein Zeitstempel und füge ihn in den File - Namen ein
