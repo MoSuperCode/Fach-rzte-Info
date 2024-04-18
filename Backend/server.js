@@ -20,7 +20,8 @@ app.post("/submit-form", upload.none(), (req, res) => {
   const protokollNummer = req.body["protokoll-nummer"];
   let untersuchung = req.body.untersuchung;
   let value = req.body.value;
-  dataToSave = `Namenskürzel: ${name},\nEmpfänger E-Mail: ${email},\nProtokollnummer: ${protokollNummer},\nUntersuchung: ${untersuchung}, Wert: ${value}\n`;
+  let bemerkung = req.body.bemerkung;
+  dataToSave = `Namenskürzel: ${name},\nEmpfänger E-Mail: ${email},\nProtokollnummer: ${protokollNummer},\nUntersuchung: ${untersuchung}, Wert: ${value}, Bemerkung: ${bemerkung}\n`;
   for (
     let count = 2;
     req.body["untersuchung" + count] && req.body["value" + count];
@@ -28,7 +29,8 @@ app.post("/submit-form", upload.none(), (req, res) => {
   ) {
     const untersuchung = req.body["untersuchung" + count];
     const value = req.body["value" + count];
-    dataToSave += `Untersuchung ${count}: ${untersuchung}, Wert ${count}: ${value}\n`;
+    const bemerkung = req.body["bemerkung" + count];
+    dataToSave += `Untersuchung ${count}: ${untersuchung}, Wert ${count}: ${value}, Bemerkung ${count}: ${bemerkung}\n`;
   }
 
   // Hier erstelle ich ein Zeitstempel und füge ihn in den File - Namen ein

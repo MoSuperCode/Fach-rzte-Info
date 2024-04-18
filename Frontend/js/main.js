@@ -54,6 +54,18 @@ document.addEventListener("DOMContentLoaded", function () {
       form.removeChild(neuerDiv); // Entfernt das gesamte Div
     });
 
+    // Erstelle Label für Bemerkung
+    const neuesLabelNot = document.createElement("label");
+    neuesLabelNot.htmlFor = "bemerkung" + idCounter;
+    neuesLabelNot.className = "form-label";
+    neuesLabelNot.textContent = "Bemerkung: ";
+
+    // Textarea für Bemerkung wird erstellt
+    const neueTextArea = document.createElement("textarea");
+    neueTextArea.className = "form-control";
+    neueTextArea.id = "bemerkung" + idCounter;
+    neueTextArea.name = "bemerkung" + idCounter;
+
     // Elemente werden ins Div eingefügt
     flexDiv.appendChild(neuesLabelUnt);
     flexDiv.appendChild(neuerLöschButton);
@@ -61,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
     neuerDiv.appendChild(neueUntersuchung);
     neuerDiv.appendChild(neuesLabelVal);
     neuerDiv.appendChild(neuerWert);
+    neuerDiv.appendChild(neuesLabelNot);
+    neuerDiv.appendChild(neueTextArea);
 
     // neuerDiv wird vor dem addMore Butten eingesetzt
     form.insertBefore(neuerDiv, addButton);
