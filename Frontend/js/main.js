@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Bitte wählen Sie einen gültigen Absender aus.");
       return;
     }
-
     const formData = new FormData(form);
 
     // Sendet die Daten asynchron zum Server, d.h. muss nicht auf ein response warten

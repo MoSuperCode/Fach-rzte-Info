@@ -48,6 +48,6 @@ app.post("/submit-form", upload.none(), (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server läuft auf http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server läuft auf http://10.35.20.60:${PORT}`);
 });
